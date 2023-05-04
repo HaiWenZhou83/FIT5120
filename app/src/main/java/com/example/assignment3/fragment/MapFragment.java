@@ -1,17 +1,11 @@
 package com.example.assignment3.fragment;
 
-import static com.baidu.mapapi.SDKInitializer.initialize;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-
-import com.baidu.mapapi.SDKInitializer;
-import com.baidu.mapapi.map.MapView;
-import com.example.assignment3.R;
 import com.example.assignment3.databinding.MapFragmentBinding;
 
 
@@ -20,7 +14,7 @@ public class MapFragment extends Fragment {
 
     public MapFragment() {}
 
-    MapView mMapView = null;
+//    MapView mMapView = null;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

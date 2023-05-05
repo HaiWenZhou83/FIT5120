@@ -18,17 +18,17 @@ public class MapFragment extends Fragment {
 
     public MapFragment() {}
 
-    MapView mMapView = null;
+    //MapView mMapView = null;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        addBinding = MapFragmentBinding.inflate(inflater, container, false);
-//        View view = addBinding.getRoot();
+        addBinding = MapFragmentBinding.inflate(inflater, container, false);
+        View view = addBinding.getRoot();
 
-        SDKInitializer.initialize(getActivity().getApplicationContext());
-        View view = inflater.inflate(R.layout.map_fragment, container, false);
-        mMapView = (MapView) view.findViewById(R.id.bmapView);
+//        SDKInitializer.initialize(getActivity().getApplicationContext());
+//        View view = inflater.inflate(R.layout.map_fragment, container, false);
+//        mMapView = (MapView) view.findViewById(R.id.bmapView);
         return view;
     }
 
@@ -38,21 +38,21 @@ public class MapFragment extends Fragment {
 //        addBinding = null;
 //    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mMapView.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mMapView.onPause();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mMapView.onDestroy();
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        mMapView.onResume();
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        mMapView.onPause();
+//    }
+//
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        mMapView.onDestroy();
+//    }
 }

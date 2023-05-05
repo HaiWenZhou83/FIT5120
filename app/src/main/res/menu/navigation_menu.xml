@@ -14,6 +14,9 @@
     <item
         android:id="@+id/nav_map_fragment"
         android:title="Map page" />
+    <item
+        android:id="@+id/nav_report_fragment"
+        android:title="Report page"/>
 </menu>
 
 

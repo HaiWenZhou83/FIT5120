@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.baidu.mapapi.SDKInitializer;
-import com.baidu.mapapi.map.MapView;
-import com.example.assignment3.R;
+
 import com.example.assignment3.databinding.MapFragmentBinding;
 
 

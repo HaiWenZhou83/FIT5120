@@ -5,17 +5,10 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:id="@+id/text_message"
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="This is Home"
-        android:gravity="center_horizontal" />
+        android:layout_height="match_parent"
+        android:clickable="true" />
 
-<!--    <com.baidu.mapapi.map.MapView-->
-<!--        android:id="@+id/bmapView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:clickable="true" />-->
 </LinearLayout>

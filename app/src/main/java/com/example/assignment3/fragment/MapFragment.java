@@ -25,7 +25,7 @@ public class MapFragment extends Fragment {
         View view = addBinding.getRoot();
 
 //        SDKInitializer.initialize(getActivity().getApplicationContext());
-//        View view = inflater.inflate(R.layout.map_fragment, container, false);
+//        View view = inflater.inflate(R.layout.map_fragment, container, false);s
 //        mMapView = (MapView) view.findViewById(R.id.bmapView);
         return view;
     }

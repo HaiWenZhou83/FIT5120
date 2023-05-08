@@ -31,19 +31,19 @@ public class User {
         this.birthday = birthday;
     }
 
-    @NonNull
-    public String getUser_email(){return user_email;}
-    public void setUser_email(@NonNull String user_email){this.user_email = user_email;}
-
-    @NonNull
-    public String getUsername(){return username;}
-    public void setUsername(@NonNull String username){this.username = username;}
-    @NonNull
-    public String getGender(){return gender;}
-    public void setGender(@NonNull String gender){this.gender = gender;}
-    @NonNull
-    public String getBirthday(){return birthday;}
-    public void setBirthday(@NonNull String birthday){this.birthday = birthday;}
+//    @NonNull
+//    public String getUser_email(){return user_email;}
+//    public void setUser_email(@NonNull String user_email){this.user_email = user_email;}
+//
+//    @NonNull
+//    public String getUsername(){return username;}
+//    public void setUsername(@NonNull String username){this.username = username;}
+//    @NonNull
+//    public String getGender(){return gender;}
+//    public void setGender(@NonNull String gender){this.gender = gender;}
+//    @NonNull
+//    public String getBirthday(){return birthday;}
+//    public void setBirthday(@NonNull String birthday){this.birthday = birthday;}
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.assignment3.fragment;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.assignment3.R;
 import com.example.assignment3.adapter.RecyclerViewAdapter;
 import com.example.assignment3.databinding.AddFragmentBinding;
+import com.example.assignment3.entity.Fitness;
 import com.example.assignment3.model.FitnessResult;
+import com.example.assignment3.viewmodel.FitnessViewModel;
 import com.example.assignment3.viewmodel.SharedViewModel;
 
 import java.util.ArrayList;
@@ -29,6 +34,8 @@ public class AddFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private List<FitnessResult> units;
     private RecyclerViewAdapter adapter;
+
+    private FitnessViewModel fitnessViewModel;
 
     public AddFragment(){}
     @Override
@@ -69,6 +76,21 @@ public class AddFragment extends Fragment {
             }
         });
 
+        fitnessViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(this.getActivity().getApplication()).create(FitnessViewModel.class);
+
+        fitnessViewModel.getAllFitness().observe(getViewLifecycleOwner(), new Observer<List<Fitness>>() {
+            @Override
+            public void onChanged(@Nullable final List<Fitness> fitnesses) {
+
+                String fitnessName = "";
+                int fT = 0;
+                for (Fitness temp : fitnesses) {
+                    fitnessName = temp.fitnessName;
+                    fT = temp.time;
+                }
+                saveData(fitnessName, fT);
+            }
+        });
 
         addBinding.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,9 +100,14 @@ public class AddFragment extends Fragment {
                 if (!stime.isEmpty() ) {
                     model.setMessage(stime);
                 }
+
+                int newtime = Integer.parseInt(stime);
+                Fitness fitness = new Fitness(unit, newtime);
+                fitnessViewModel.insert(fitness);
+
                 if (!unit.isEmpty() || !stime.isEmpty()) {
-                    int time = new Integer(stime).intValue();
-                    saveDate(unit, time);
+
+                    saveData(unit, newtime);
                 }
             }
         });
@@ -94,7 +121,7 @@ public class AddFragment extends Fragment {
         return view;
     }
 
-    private void saveDate(String unit, int time) {
+    private void saveData(String unit, int time) {
         FitnessResult fitnessResult = new FitnessResult(unit, time);
         units.add(fitnessResult);
         adapter.addUnits(units);

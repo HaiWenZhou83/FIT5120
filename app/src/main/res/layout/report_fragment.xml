@@ -1,14 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="187dp"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="15dp"
+                android:text="Statistics"
+                android:textColor="@color/orange"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/datePickerStar"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Choose Date"
+                    android:layout_marginLeft="14dp"
+                    android:background="@color/white"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/textStarView"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Starting Date"
+                    android:textSize="20dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textEndView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ending Date: "
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/datePickerEnd"
+                    style="?android:spinnerStyle"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:text="JAN 01 2023"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textLineView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Line Chat"
+                    android:textSize="16sp" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/line_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:text="Select"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/textBarView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ending Date: "
+                    android:textSize="16sp" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/bar_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:text="Select"
+                    android:textSize="16sp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <com.github.mikephil.charting.charts.BarChart
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:id="@+id/barChart" />
 
 </LinearLayout>

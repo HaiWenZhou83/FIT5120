@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.assignment3.databinding.RyLayoutBinding;
 import com.example.assignment3.model.FitnessResult;
 

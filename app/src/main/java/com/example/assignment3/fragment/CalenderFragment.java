@@ -7,23 +7,25 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.assignment3.databinding.HomeFragmentBinding;
-import com.example.assignment3.viewmodel.SharedViewModel;
+import com.example.assignment3.databinding.CalenderFragmentBinding;
 
-public class HomeFragment extends Fragment {
-    private HomeFragmentBinding addBinding;
-    public HomeFragment(){}
-    @Override
+public class CalenderFragment extends Fragment {
+
+    private CalenderFragmentBinding binding;
+
+    public CalenderFragment() {}
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-// Inflate the View for this fragment
-        addBinding = HomeFragmentBinding.inflate(inflater, container, false);
-        View view = addBinding.getRoot();
+
+        binding = CalenderFragmentBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
         return view;
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        addBinding = null;
+        binding = null;
     }
 }

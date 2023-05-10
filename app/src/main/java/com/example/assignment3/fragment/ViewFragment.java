@@ -78,8 +78,11 @@ public class ViewFragment extends Fragment {
                 for (Fitness temp : fitnesses) {
                     fitnessName = temp.fitnessName;
                     fT = temp.time;
+                    FitnessResult fitnessResult = new FitnessResult(fitnessName, fT);
+                    units.add(fitnessResult);
+                    adapter.addUnits(units);
                 }
-                saveData(fitnessName, fT);
+                //saveData(fitnessName, fT);
             }
         });
 

@@ -20,4 +20,7 @@ public interface FitnessDAO {
 
     @Insert
     void insert(Fitness fitness);
+
+    @Query("DELETE FROM fitness")
+    void deleteAll();
 }

@@ -33,4 +33,6 @@ public class FitnessViewModel extends AndroidViewModel {
     public void insert(Fitness fitness) {
         cRepository.insert(fitness);
     }
+
+    public void deletAll() { cRepository.deletAll();}
 }

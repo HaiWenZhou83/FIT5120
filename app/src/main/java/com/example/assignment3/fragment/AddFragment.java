@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -56,18 +57,23 @@ public class AddFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         addBinding.recyclerView.setLayoutManager(layoutManager);
 
-//        String[] fitnessItems = {"Aerobic exercise", "Shoulder press", "Bench press"};
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(addBinding.fitnessName.getContext(),
-                R.array.fitnessItems, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        addBinding.spinner.setAdapter(adapter);
+        List<String>list = new ArrayList<String>();
+        list.add("Aerobic exercise");
+        list.add("Shoulder press");
+        list.add("Bench press");
+
+        final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(addBinding.fitnessName
+                .getContext(), android.R.layout.simple_spinner_item, list);
+
+        addBinding.spinner.setAdapter(spinnerAdapter);
 
         addBinding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Object choice = parent.getItemAtPosition(position);
-                //parent.getItemAtPosition(position);
-                Toast.makeText(addBinding.getRoot().getContext(), "your choice is "+choice,
-                        Toast.LENGTH_LONG).show();
+
+                String selectItem = parent.getItemAtPosition(position).toString();
+//                Toast.makeText(addBinding.getRoot().getContext(), "your choice is "+selectItem,
+//                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -116,6 +122,14 @@ public class AddFragment extends Fragment {
             public void onClick(View v) {
                 addBinding.editText.setText("");
                 addBinding.editFtName.setText("");
+            }
+        });
+
+        addBinding.DeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fitnessViewModel.deletAll();
+                Toast.makeText(addBinding.getRoot().getContext(), "Delete All record", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

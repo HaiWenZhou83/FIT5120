@@ -35,6 +35,15 @@ public class FitnessRepository {
         });
     }
 
+    public void deletAll(){
+        FitnessDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                fitnessDAO.deleteAll();
+            }
+        });
+    }
+
     public CompletableFuture<Fitness> findByFNFuture(final String fitname) {
         return CompletableFuture.supplyAsync(new Supplier<Fitness>() {
             @Override

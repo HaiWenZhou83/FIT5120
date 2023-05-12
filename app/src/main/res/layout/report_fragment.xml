@@ -44,7 +44,7 @@
                     android:id="@+id/textStarView"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Starting Date"
+                    android:hint="Starting Date"
                     android:textSize="20dp" />
 
 

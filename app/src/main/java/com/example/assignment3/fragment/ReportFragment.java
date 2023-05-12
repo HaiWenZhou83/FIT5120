@@ -10,13 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.assignment3.R;
 import com.example.assignment3.databinding.ReportFragmentBinding;
+import com.example.assignment3.viewmodel.SharedViewModel;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -24,9 +27,12 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -34,6 +40,9 @@ public class ReportFragment extends Fragment {
     private ReportFragmentBinding binding;
     public ReportFragment(){}
     final String CHART_URL = "";
+
+    private Date endDatePiker;
+    private Date startDatePiker;
 
     private DatePickerDialog datePickerDialog;
 
@@ -72,7 +81,7 @@ public class ReportFragment extends Fragment {
                 month = month + 1;
                 Log.d(TAG, "onDateSet: dd/mm/yy: " + day + "/" + month + "/" + year);
 
-                String date = day + "/" + month + "/" + year;
+                String date = day + " " + getMonthFormat(month) + " " + year;
                 binding.textStarView.setText(date);
             }
         };
@@ -84,19 +93,47 @@ public class ReportFragment extends Fragment {
             }
         });
 
-        /////////////////////////////////////////
+        // -------------------------------------------------------->
 
         binding.barButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new bar_fragment());
+                String startimeValidtion = binding.textStarView.getText().toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
+                try {
+                    endDatePiker = sdf.parse(binding.datePickerEnd.getText().toString());
+                    startDatePiker = sdf.parse(startimeValidtion);
+                }catch (ParseException e){
+                    e.printStackTrace();
+                }
+                if (startimeValidtion.isEmpty()){
+                    Toast.makeText(binding.getRoot().getContext(), "Invalid Starting date", Toast.LENGTH_SHORT).show();
+                } else if (startDatePiker.after(endDatePiker)) {
+                    Toast.makeText(binding.getRoot().getContext(), "Invalid date", Toast.LENGTH_SHORT).show();
+                } else {
+                    replaceFragment(new bar_fragment());
+                }
             }
         });
 
         binding.pieButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new pie_fragment());
+                String startimeValidtion = binding.textStarView.getText().toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
+                try {
+                    endDatePiker = sdf.parse(binding.datePickerEnd.getText().toString());
+                    startDatePiker = sdf.parse(startimeValidtion);
+                }catch (ParseException e){
+                    e.printStackTrace();
+                }
+                if (startimeValidtion.isEmpty()){
+                    Toast.makeText(binding.getRoot().getContext(), "Invalid Starting date", Toast.LENGTH_SHORT).show();
+                } else if (startDatePiker.after(endDatePiker)) {
+                    Toast.makeText(binding.getRoot().getContext(), "Invalid date", Toast.LENGTH_SHORT).show();
+                } else {
+                    replaceFragment(new pie_fragment());
+                }
             }
         });
 
@@ -143,7 +180,7 @@ public class ReportFragment extends Fragment {
     }
 
     private String makeDateString(int day, int month, int year) {
-        return day+ " "+ getMonthFormat(month) +" "+ year;
+        return day+ " " + getMonthFormat(month) + " " + year;
     }
 
     private String getMonthFormat(int month) {

@@ -1,5 +1,6 @@
 package com.example.assignment3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.assignment3.databinding.ActivityMainBinding;
 import com.example.assignment3.databinding.HomeActivityBinding;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
                                     startActivity(new Intent(MainActivity.this,
                                             HomeActivity.class));
                                 }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    String msg = "User name or password is invalid, try again!";
+                                    toastMsg(msg);
+                                }
                             });
                 }
             }
@@ -66,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-////        setContentView(R.layout.activity_main);
 ////FirebaseApp.initializeApp(this);
 //        auth = FirebaseAuth.getInstance();
 //        EditText emailEditText = findViewById(R.id.emailEditText);

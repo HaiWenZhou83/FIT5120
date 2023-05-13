@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.example.assignment3.databinding.ChartPieBinding;
 import com.github.mikephil.charting.data.PieData;
@@ -23,17 +24,16 @@ public class pie_fragment extends Fragment {
     public pie_fragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = ChartPieBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         List<PieEntry> visitors = new ArrayList<>();
-        visitors.add(new PieEntry(500, "2016"));
-        visitors.add(new PieEntry(600, "2017"));
-        visitors.add(new PieEntry(750, "2018"));
-        visitors.add(new PieEntry(600, "2019"));
-        visitors.add(new PieEntry(670, "2020"));
+        visitors.add(new PieEntry(30, "Running"));
+        visitors.add(new PieEntry(40, "Caidio Training"));
+        visitors.add(new PieEntry(30, "Weight Training"));
+        visitors.add(new PieEntry(30, "Flexibility Training"));
 
         PieDataSet pieDataSet = new PieDataSet(visitors, "Visitors");
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
@@ -44,7 +44,7 @@ public class pie_fragment extends Fragment {
 
         binding.pieChart.setData(pieData);
         binding.pieChart.getDescription().setEnabled(false);
-        binding.pieChart.setCenterText("Visitors");
+        binding.pieChart.setCenterText("Time record (min)");
         binding.pieChart.animate();
 
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.assignment3.databinding.ChartBarBinding;
@@ -26,26 +27,23 @@ public class bar_fragment extends Fragment {
     public bar_fragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = ChartBarBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         List<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(0, 6766));
-        barEntries.add(new BarEntry(1, 4444));
-        barEntries.add(new BarEntry(2, 2222));
-        barEntries.add(new BarEntry(3, 5555));
-        barEntries.add(new BarEntry(4, 1111));
-        barEntries.add(new BarEntry(5, 3656));
-        barEntries.add(new BarEntry(6, 3435));
+        barEntries.add(new BarEntry(0, 30));
+        barEntries.add(new BarEntry(1, 40));
+        barEntries.add(new BarEntry(2, 30));
+        barEntries.add(new BarEntry(3, 30));
 
         BarDataSet barDataSet = new BarDataSet(barEntries, "Steps");
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
-        List<String> xAxisValues = new ArrayList<>(Arrays.asList("Sun", "Mon", "Tues",
-                "Wed", "Thurs", "Fri","Sat"));
+        List<String> xAxisValues = new ArrayList<>(Arrays.asList("Running", "Caidio Training",
+                "Weight Training", "Flexibility Training"));
 
         binding.barChart.getXAxis().setValueFormatter(new
                 com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValues));

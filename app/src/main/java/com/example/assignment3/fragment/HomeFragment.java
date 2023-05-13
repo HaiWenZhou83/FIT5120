@@ -6,13 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.assignment3.Example;
 import com.example.assignment3.Main;
 import com.example.assignment3.databinding.HomeFragmentBinding;
-import com.example.assignment3.viewmodel.SharedViewModel;
 import com.example.assignment3.weatherapi;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,7 +80,17 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //              <--------------------------->   funtion 2 youtube display by api retrofit
+        //              <--------------------------->   function 2 youtube display by api retrofit
+        YouTubePlayerView youTubePlayerView = binding.youtubePlayerView;
+        getLifecycle().addObserver(youTubePlayerView);
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                String videoId = "j7rKKpwdXNE";
+                youTubePlayer.loadVideo(videoId, 0);
+            }
+        });
+
         return view;
     }
 

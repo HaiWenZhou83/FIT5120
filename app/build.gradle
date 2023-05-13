@@ -79,4 +79,7 @@ dependencies {
 
     //map
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Youtube api
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.0.0'
 }

@@ -14,4 +14,7 @@
     <string name="gender_error">Cant be empty</string>
     <string name="birthday_after_error">Birthday cannot be later than today</string>
     <string name="birthday_empty_error">Please choose a date</string>
+    <string name="introduce_1">Training for muscle-strengthening activities help improve blood pressure and reduce risk of hypertension and heart disease.</string>
+    <string name="introduce_2">Training for increasing the force output of the muscles and uses a variety of exercises and types of equipment.</string>
+    <string name="introduce_3">Stretching and flexibility training help increase mobility and range of motion, as well as improving balance and posture.</string>
 </resources>

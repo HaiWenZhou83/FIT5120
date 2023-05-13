@@ -2,12 +2,6 @@ package com.example.assignment3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -38,36 +32,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
         auth = FirebaseAuth.getInstance();
 
-        binding.signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SignupActivity.class);
-                startActivity(intent);
-            }
+        binding.signUp.setOnClickListener(view1 -> {
+            Intent intent = new Intent(MainActivity.this,SignupActivity.class);
+            startActivity(intent);
         });
 
-        binding.loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (loginCheck()) {
-                    binding.progressBar.setVisibility(View.VISIBLE);
-                    auth.signInWithEmailAndPassword(binding.emailInput.getText().toString(), binding.passwordInput.getText().toString())
-                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    String msg = "Login Successful";
-                                    toastMsg(msg);
-                                    startActivity(new Intent(MainActivity.this,
-                                            HomeActivity.class));
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    String msg = "User name or password is invalid, try again!";
-                                    toastMsg(msg);
-                                }
-                            });
-                }
+        binding.loginButton.setOnClickListener(view12 -> {
+            if (loginCheck()) {
+                binding.progressBar.setVisibility(View.VISIBLE);
+                auth.signInWithEmailAndPassword(binding.emailInput.getText().toString(), binding.passwordInput.getText().toString())
+                        .addOnSuccessListener(authResult -> {
+                            String msg = "Login Successful";
+                            toastMsg(msg);
+                            startActivity(new Intent(MainActivity.this,
+                                    HomeActivity.class));
+                        }).addOnFailureListener(e -> {
+                            String msg = "User name or password is invalid, try again!";
+                            toastMsg(msg);
+                        });
             }
         });
 
@@ -88,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 //                                          }
 //        );
 //
-//        Button loginButton =findViewById(R.id.signinButton);
+//        Button loginButton =findViewById(R.id.signingButton);
 //        loginButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -120,28 +102,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean loginCheck() {
-        Boolean validEmail = false;
-        Boolean validPassword = false;
+        boolean validEmail = false;
+        boolean validPassword = false;
         Editable emailInput = binding.emailInput.getText();
         Editable passwordInput = binding.passwordInput.getText();
         if (emailInput.toString().isEmpty()) {
             binding.emailError.setError(getResources().getString(R.string.email_error));
-            validEmail = false;
         } else {
             binding.emailError.setErrorEnabled(false);
             validEmail = true;
         }
         if (passwordInput.toString().isEmpty()) {
             binding.passwordError.setError(getResources().getString(R.string.password_empty_error));
-            validPassword = false;
         } else {
             binding.passwordError.setErrorEnabled(false);
             validPassword = true;
         }
-        if (validEmail && validPassword) {
-            return true;
-        } else {
-            return false;
-        }
+        return validEmail && validPassword;
     }
 }

@@ -13,17 +13,16 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.assignment3.databinding.ActivityMainBinding;
 
 public class HomeActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
-    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.example.assignment3.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
+        //to display the Navigation button as a drawer symbol,not being shown as an Up button
+        AppBarConfiguration mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home_fragment,
                 R.id.nav_add_fragment,
                 R.id.nav_view_fragment)

@@ -99,7 +99,7 @@ public class ReportFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String startimeValidtion = binding.textStarView.getText().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
                 try {
                     endDatePiker = sdf.parse(binding.datePickerEnd.getText().toString());
                     startDatePiker = sdf.parse(startimeValidtion);
@@ -108,7 +108,7 @@ public class ReportFragment extends Fragment {
                 }
                 if (startimeValidtion.isEmpty()){
                     Toast.makeText(binding.getRoot().getContext(), "Invalid Starting date", Toast.LENGTH_SHORT).show();
-                } else if (startDatePiker.after(endDatePiker)) {
+                } else if (startDatePiker != null && startDatePiker.after(endDatePiker)) {
                     Toast.makeText(binding.getRoot().getContext(), "Invalid date", Toast.LENGTH_SHORT).show();
                 } else {
                     replaceFragment(new bar_fragment());
@@ -129,7 +129,7 @@ public class ReportFragment extends Fragment {
                 }
                 if (startimeValidtion.isEmpty()){
                     Toast.makeText(binding.getRoot().getContext(), "Invalid Starting date", Toast.LENGTH_SHORT).show();
-                } else if (startDatePiker.after(endDatePiker)) {
+                } else if (startDatePiker != null && startDatePiker.after(endDatePiker)) {
                     Toast.makeText(binding.getRoot().getContext(), "Invalid date", Toast.LENGTH_SHORT).show();
                 } else {
                     replaceFragment(new pie_fragment());

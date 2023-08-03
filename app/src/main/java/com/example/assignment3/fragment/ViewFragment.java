@@ -43,21 +43,6 @@ public class ViewFragment extends Fragment {
         binding = ViewFragmentBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-//        SharedViewModel model = new
-//                ViewModelProvider(requireActivity()).get(SharedViewModel.class);
-//        model.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                binding.textMessage.setText(s);
-//            }
-//        });
-
-//        activities=new ArrayList<AimInformation>();
-//        activities= AimInformation.createContactsList();
-//        adapter =new RecyclerViewAdapter(activities);
-//        binding.recyclerView.addItemDecoration(new DividerItemDecoration(this,
-//                LinearLayoutManager.VERTICAL) );
-
         units = new ArrayList<FitnessResult>();
         units = FitnessResult.createContactsList();
         adapter = new RecyclerViewAdapter(units);

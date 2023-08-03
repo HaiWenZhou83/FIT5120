@@ -84,20 +84,6 @@ public class AddFragment extends Fragment {
 
         fitnessViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(this.getActivity().getApplication()).create(FitnessViewModel.class);
 
-//        fitnessViewModel.getAllFitness().observe(getViewLifecycleOwner(), new Observer<List<Fitness>>() {
-//            @Override
-//            public void onChanged(@Nullable final List<Fitness> fitnesses) {
-//
-//                String fitnessName = "";
-//                int fT = 0;
-//                for (Fitness temp : fitnesses) {
-//                    fitnessName = temp.fitnessName;
-//                    fT = temp.time;
-//                }
-//                saveData(fitnessName, fT);
-//            }
-//        });
-
         addBinding.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

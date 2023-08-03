@@ -28,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="40sp"
-                    android:text="Fitness"
+                    android:text="Promoting sustainable habits"
                     android:textColor="@color/green"
                     android:gravity="center_horizontal" />
 

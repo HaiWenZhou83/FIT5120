@@ -7,16 +7,16 @@
         android:title="Home page" />
     <item
         android:id="@+id/nav_add_fragment"
-        android:title="Add Fitness" />
+        android:title="Check Energy" />
     <item
         android:id="@+id/nav_view_fragment"
-        android:title="Display goal" />
-    <item
-        android:id="@+id/nav_map_fragment"
-        android:title="Map page" />
-    <item
-        android:id="@+id/nav_calender_fragment"
-        android:title="Calender page" />
+        android:title="Calculation Carboon footprint" />
+<!--    <item-->
+<!--        android:id="@+id/nav_map_fragment"-->
+<!--        android:title="Map page" />-->
+<!--    <item-->
+<!--        android:id="@+id/nav_calender_fragment"-->
+<!--        android:title="Calender page" />-->
     <item
         android:id="@+id/nav_report_fragment"
         android:title="Report page"/>

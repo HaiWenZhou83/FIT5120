@@ -30,10 +30,10 @@ public class pie_fragment extends Fragment {
         View view = binding.getRoot();
 
         List<PieEntry> visitors = new ArrayList<>();
-        visitors.add(new PieEntry(30, "Running"));
-        visitors.add(new PieEntry(40, "Caidio Training"));
-        visitors.add(new PieEntry(30, "Weight Training"));
-        visitors.add(new PieEntry(30, "Flexibility Training"));
+        visitors.add(new PieEntry(30, "My home"));
+        visitors.add(new PieEntry(40, "Burwood"));
+        visitors.add(new PieEntry(30, "boxhill"));
+        visitors.add(new PieEntry(30, "Sprinvale"));
 
         PieDataSet pieDataSet = new PieDataSet(visitors, "Visitors");
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
